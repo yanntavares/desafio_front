@@ -1,0 +1,2 @@
+# desafio_nest
+Desafio da trilha de Front-End do Onboarding da Seed a Bit Tecnologia, com objetivo de reforçar o entendimento sobre App Router, Server Components, paginação via searchParams e navegação com next/link no Next.js.. O foco é arquitetura e decisão técnica, não estética.
