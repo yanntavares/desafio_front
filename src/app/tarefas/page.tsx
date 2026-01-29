@@ -36,20 +36,21 @@ export default async function TarefasPage({
   const nextPage = page < totalPages ? page + 1 : null;
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col text-center items-center">
         {/* Textos iniciais */}
       <h3
-        className="w-full bg-blue-200 font-bold text-3xl align-center 
-            items-center flex flex-col "
+        className="w-full bg-blue-200 font-bold text-2xl md:text-3xl lg:text-3xl items-center "
       >
         Tarefas
       </h3>
+
       <p className="text-gray-600 mt-4">
         Página {page} de {totalPages}
       </p>
 
       {/* Botões de filtro */}
-      <div className="flex gap-4 pt-6">
+      <div className="grid grid-cols-1 gap-4 md:flex md:gap-4 lg:flex lg:gap-4 pt-6">
+
         <Link href="/tarefas?status=all">
           <Button
             label="Todas"
@@ -67,10 +68,12 @@ export default async function TarefasPage({
             label="Completas"
           />
         </Link>
+
       </div>
 
       {/* Grid de tasks */}
-      <div className="grid grid-cols-3 gap-8 pt-12 justify-items-center">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-8 pt-12 justify-items-center">
+
         {paginatedTasks.map((task) => ( // Render dinâmica das tasks
           <Task
             key={task.id}
@@ -80,11 +83,14 @@ export default async function TarefasPage({
             isTaskCompleted={task.isCompleted}
           />
         ))}
+
       </div>
 
         {/* Botões de navegação entre páginas */}
-      <footer className="p-6 flex justify-center items-center gap-8">
+      <footer className="p-6 flex gap-2 justify-center items-center md:gap-6 lg:gap-8">
+
         {previousPage ? (
+
           <Link href={`/tarefas?page=${previousPage}&status=${statusFilter}`}>
             {/* Manter o statusFilter ao navegar */}
             <Button label="Anterior"></Button>
@@ -93,15 +99,18 @@ export default async function TarefasPage({
           <Link href="./">
             <Button label="Anterior"></Button>
           </Link>
+
         )}
 
         {nextPage ? (
+
           <Link href={`/tarefas?page=${nextPage}&status=${statusFilter}`}> 
             {/* Manter o statusFilter ao navegar */}
             <Button label="Próximo"></Button>
           </Link>
         ) : (
           <Button label="Próximo"></Button>
+          
         )}
       </footer>
     </div>
